@@ -8,6 +8,7 @@
 Используя механизмы Reflection, создайте простейший IoC-контейнер, который позволяет следующее:
 1. Разметить классы, требующие внедрения зависимостей одним из следующих способов
    a. Через конструктор (тогда класс размечается атрибутом [ImportConstructor])
+   
       [ImportConstructor]
       public class CustomerBLL
       {
@@ -16,6 +17,7 @@
       }
 
    b. Через публичные свойства (тогда каждое свойство, требующее инициализации,  размечается атрибутом [Import])
+   
       public class CustomerBLL
       {
           [Import]
@@ -37,7 +39,7 @@
       public class CustomerDAL : ICustomerDAL
       { }
       
- 3.Явно указать классы, которые зависят от других или требуют внедрения зависимостей
+ 3. Явно указать классы, которые зависят от других или требуют внедрения зависимостей
       var container = new Container();
       container.AddType(typeof(CustomerBLL));
       container.AddType(typeof(Logger));
