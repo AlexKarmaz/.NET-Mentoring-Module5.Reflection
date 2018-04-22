@@ -45,6 +45,7 @@
     <Compile Include="Attributes\ImportConstructorAttribute.cs" />
     <Compile Include="Container.cs" />
     <Compile Include="DefaultActivator.cs" />
+    <Compile Include="EmitActivator.cs" />
     <Compile Include="Exceptions\IoCException.cs" />
     <Compile Include="IActivator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
