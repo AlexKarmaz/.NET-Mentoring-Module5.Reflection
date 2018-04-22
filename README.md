@@ -29,27 +29,31 @@
    При этом, конкретный класс, понятное дело, размечается только одним способом!
 2. Разметить зависимые классы
    a. Когда класс используется непосредственно
+   
       [Export]
       public class Logger
       { }
 
    b. Когда в классах, требующих реализации зависимости используется интерфейс или базовый класс
-      public class CustomerBLL
+   
       [Export(typeof(ICustomerDAL))]
       public class CustomerDAL : ICustomerDAL
       { }
       
  3. Явно указать классы, которые зависят от других или требуют внедрения зависимостей
+ 
       var container = new Container();
       container.AddType(typeof(CustomerBLL));
       container.AddType(typeof(Logger));
       container.AddType(typeof(CustomerDAL), typeof(ICustomerDAL));
       
  4. Добавить в контейнер все размеченные атрибутами [ImportConstructor], [Import] и [Export], указав сборку
+ 
     var container = new Container();
     container.AddAssembly(Assembly.GetExecutingAssembly());
 
  5. Получить экземпляр ранее зарегистрированного класса со всеми зависимостями 
+ 
     var customerBLL = (CustomerBLL)container.CreateInstance(
             typeof(CustomerBLL));
     var customerBLL = container.CreateInstance<CustomerBLL>();
